@@ -1,0 +1,55 @@
+libcalby: a tiny calendar library
+=================================
+
+The libcalby provides a suite of tools to manage different calendars easy.
+Currently supports Gregorian Calendar and Julian Calendar, and also support
+a number of formats for date and time, including ISO, TAI64, Julian Date and
+Modified Julian Date.
+
+libcalby still under development, and new calendars and formats will be
+added in the future.
+
+Example of usage
+----------------
+
+  #include <stdio.h>
+  #include "calby.h"
+
+  int
+  main (int argc, char **argv)
+  {
+      cal_datetime_t t;
+      uint64_t tai;
+      char buf[CAL_ISOFMT_LEN];
+
+      cal_now(&t); /* get current time */
+      cal_fmt(&t,buf); /* human readable */
+
+      /* print date-time in human readable form */
+      printf("%s\n", buf);
+
+      /* print julian date */
+      printf("%ld\n", cal_jd(&t));
+
+      /* print modified julian date */
+      printf("%ld\n", cal_mjd(&t));
+
+      /* print TAI form */
+      printf("@%llx\n", cal_tai(&t));
+
+      /* add leap seconds to tai */
+      /* /etc/leapseconds.dat must be exists */
+      tai = cal_tai(&t);
+      cal_leapsecs_add(&tai);
+
+      /* print TAI with leap seconds */
+      printf("@%llx\n", tai);
+
+      /* get julian calendar date */
+      cal_julian(&t);
+      cal_fmt(&t,buf);
+
+      printf("%s\n",buf);
+  }
+
+
