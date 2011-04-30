@@ -1,6 +1,7 @@
 #ifndef __calby_h__
 #define __calby_h__
 
+#include <stdlib.h>
 #include <sys/types.h>
 
 /*
