@@ -160,13 +160,9 @@ W_EXPORT int cal_leapsecs_get(uint64_t tai);
 struct _cal_leapsecs_s {
     size_t    count;          /*!< the number of saved leapseconds */
     uint64_t *list;           /*!< list of tai stamps for that seconds */
-    int     (*load)(int);     /*!< pointer to cal_leapsecs_load function */
-    int     (*init)(void);    /*!< pointer to cal_leapsecs_init function */
 } cal_leapsecs = {
     .count = 0,
-    .list  = NULL,
-    .load  = cal_leapsecs_load,
-    .init  = cal_leapsecs_init
+    .list  = NULL
 };
 /*/}*/ /* end of group leapseconds */
 

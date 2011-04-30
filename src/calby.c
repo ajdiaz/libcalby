@@ -261,7 +261,7 @@ cal_leapsecs_sub(uint64_t *tai)
 {
     int i,r;
 
-    if (cal_leapsecs.init() == -1)
+    if (cal_leapsecs_init() == -1)
         return -1;
 
     for (i=0,r=0;i<cal_leapsecs.count;i++,r++)
@@ -276,7 +276,7 @@ cal_leapsecs_add(uint64_t *tai)
 {
     int i,r;
 
-    if (cal_leapsecs.init() == -1)
+    if (cal_leapsecs_init() == -1)
         return -1;
 
     for (r=0,i=0;i<cal_leapsecs.count;i++,r++)
@@ -292,7 +292,7 @@ cal_isleapsec(uint64_t tai)
 {
     int i;
 
-    if (cal_leapsecs.init() == -1)
+    if (cal_leapsecs_init() == -1)
         return -1;
 
     for (i=0;i<cal_leapsecs.count;i++)
@@ -310,7 +310,7 @@ cal_leapsecs_get(uint64_t tai)
 {
     int i,r=0;
 
-    if (cal_leapsecs.init() == -1)
+    if (cal_leapsecs_init() == -1)
         return -1;
 
     for (i=0;i<cal_leapsecs.count;i++,r++)
