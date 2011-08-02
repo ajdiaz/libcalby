@@ -23,7 +23,7 @@ Example of usage
       char buf[CAL_ISOFMT_LEN];
 
       cal_now(&t); /* get current time */
-      cal_fmt(&t,buf); /* human readable */
+      cal_format(&t,buf); /* human readable */
 
       /* print date-time in human readable form */
       printf("%s\n", buf);
@@ -47,7 +47,7 @@ Example of usage
 
       /* get julian calendar date */
       cal_julian(&t);
-      cal_fmt(&t,buf);
+      cal_format(&t,buf);
 
       printf("%s\n",buf);
   }
