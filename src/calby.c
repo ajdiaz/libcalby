@@ -138,7 +138,7 @@ cal_now(cal_datetime_t *t)
     struct tm l;
     time_t    s;
 
-    s = time((long *)0);
+    s = time((time_t *)0);
 
     if (localtime_r(&s,&l) == NULL)
         return NULL;
@@ -151,10 +151,14 @@ cal_now(cal_datetime_t *t)
     t->mon  = l.tm_mon + 1;
     t->min  = l.tm_min;
     t->sec  = l.tm_sec;
-    t->off  = (-1)*(long)(timezone / 60);
+#if defined(_SVID_SOURCE) || defined(_XOPEN_SOURCE)
+    t->off  = (-1)*(long)(timezone / 60.0);
 
     if (l.tm_isdst > 0)
         t->off += 60;
+#else
+    t->off  = (long)(l.tm_gmtoff / 60.0);
+#endif
 
     return t;
 }

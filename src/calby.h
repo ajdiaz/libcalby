@@ -21,7 +21,10 @@
 # define W_HIDDEN
 #endif
 
-typedef unsigned long long uint64_t;
+#ifndef uint64_t
+typedef unsigned long long _uint64_t;
+#define uint64_t _uint64_t
+#endif
 
 /* === Miscelaneus utilities === */
 /*!
