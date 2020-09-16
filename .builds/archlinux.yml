@@ -1,0 +1,6 @@
+image: archlinux
+sources:
+  - https://git.sr.ht/~ajdiaz/libcalby
+tasks:
+  - build: |
+      make -C libcalby
