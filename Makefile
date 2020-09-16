@@ -14,7 +14,7 @@ BINS     = example.so
 RM       = rm -f
 LD       = ld
 LDFLAGS  =
-ARFLAGS  = rcsu
+ARFLAGS  = rcsD
 INSTALL  = install
 USE      =
 ENABLE   = # ASSERT
@@ -32,7 +32,7 @@ ENABLE   = # ASSERT
 # --- Do not touch below this line ---
 
 ifndef _ARCH
-	_ARCH := $(shell arch)
+	_ARCH := $(shell uname -m)
 	export _ARCH
 endif
 
